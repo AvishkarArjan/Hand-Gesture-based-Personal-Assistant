@@ -1,0 +1,7 @@
+0 Thumb_up
+1 Thumb_down
+2 V_up
+3 V_down
+4 SS
+5 Music
+6 Calc

@@ -1,0 +1,21 @@
+L
+
+10 Thumb_up
+11 Thumb_down
+12 V_up
+13 V_down
+8 Music
+9 SS
+3 Calc
+
+R
+
+0 A
+1 B
+2 C
+4 D
+5 F
+6 G
+7 L
+14 W
+15 Y
