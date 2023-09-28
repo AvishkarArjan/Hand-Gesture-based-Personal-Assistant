@@ -1,0 +1,18 @@
+
+Thumb up - increase brightness
+Thumb down - decrease brightness
+V - volume
+Palm - Screenshot
+
+A - notepad
+W - word
+B - excel
+D - music
+G- SS folder
+C - Calculator
+
+L - google
+Y - Youtube
+
+
+

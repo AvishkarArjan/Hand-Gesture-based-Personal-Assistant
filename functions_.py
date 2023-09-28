@@ -68,7 +68,7 @@ class MusicPlayer:
         label.pack()
         
         # folder_path = filedialog.askdirectory()
-        folder_path = r"C:\Users\Avishkar Arjan\Music"
+        folder_path = os.getcwd() + "\\music"
         self.track_list.extend([os.path.join(folder_path, file) for file in os.listdir(folder_path) if file.endswith('.mp3')])
         self.current_track.set(self.track_list[0])
         

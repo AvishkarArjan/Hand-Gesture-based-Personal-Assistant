@@ -25,7 +25,6 @@ import tkinter as tk
 from tkinter import Tk
 from functions_ import ImageViewerApp, MusicPlayer
 
-p = multiprocessing.Process(target=playsound, args=(r"C:\Users\Avishkar Arjan\Downloads\motivational-day-112790.mp3",))
 
 def take_ss():
     image_name = f"screenshot-{str(time.time())}"
@@ -51,13 +50,13 @@ volume = cast(interface, POINTER(IAudioEndpointVolume))
 
 def inc_vol():
     current = volume.GetMasterVolumeLevel()
-    if current == 0.0:
+    if current+3.0 >= 0.0:
         return
     volume.SetMasterVolumeLevel(current + 3.0, None)
 
 def dec_vol():
     current = volume.GetMasterVolumeLevel()
-    if current == -65.0:
+    if current-3.0 <= -65.0:
         return
     volume.SetMasterVolumeLevel(current - 3.0, None)
 
@@ -77,7 +76,9 @@ def play_music():
     try:
         root = tk.Tk()
         player = MusicPlayer(root)
+        player.play_music()
         root.mainloop()
+        
     except:
         print("Music playing...")
 
@@ -91,7 +92,7 @@ offset = 20
 imgSize = 300
 
 labels = ["A","B","C","Calc","D","F","G","L","Music","SS","Thumb_up","Thumb_down","V_up","V_down","W","Y"]
-labels_left = ["Thumb_up","Thumb_down","V_up","V_down","Music","SS","Calc"]
+labels_left = ["Thumb_up","Thumb_down","V_up","V_down","SS","M","Calc"]
 labels_right = ["A","B","C","D","F","G","L","W","Y"]
 while True:
     success, img = cap.read()
@@ -139,6 +140,47 @@ while True:
                 prediction, index = classifier_right.getPrediction(imgWhite, draw=False)
                 cv2.putText(imgOutput, labels_right[index], (x,y-20), cv2.FONT_HERSHEY_COMPLEX,2,(255,0,255), 2)
 
+            if index == 0:
+                time.sleep(1)
+                os.startfile(r"C:\Windows\System32\notepad.exe")
+                time.sleep(2)
+            elif index == 1:
+                time.sleep(1)
+                os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel.lnk")
+                time.sleep(2)
+            elif index == 2:
+                time.sleep(1)
+                os.startfile(r"C:\Windows\System32\calc.exe")
+                time.sleep(1)
+            elif index == 3:
+                # webbrowser.open("https://www.google.com")
+                # os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint.lnk")
+                
+                # thread_1 = threading.Thread(target=show_pics)
+                # thread_1.start()
+                time.sleep(1)
+                thread_1 = threading.Thread(target=play_music)
+                thread_1.start()
+                time.sleep(2)
+                # time.sleep(5)
+            elif index == 5:
+                time.sleep(1)
+                os.startfile(r"C:\Users\Avishkar Arjan\Pictures\Screenshots")
+                time.sleep(2)
+
+            elif index==6:
+                time.sleep(1)
+                webbrowser.open("https://www.google.com")
+                time.sleep(2)
+            elif index == 7:
+                time.sleep(1)
+                os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Word.lnk")
+                time.sleep(2)
+            elif index == 8:
+                time.sleep(1)
+                webbrowser.open("https://www.youtube.com")
+                time.sleep(2)
+
         else:
             if aspectRatio > 1:
                 k = imgSize / h
@@ -164,24 +206,22 @@ while True:
                 prediction, index = classifier_left.getPrediction(imgWhite, draw=False)
                 cv2.putText(imgOutput, labels_left[index], (x,y-20), cv2.FONT_HERSHEY_COMPLEX,2,(255,0,255), 2)
 
-            
+            if index == 0:
+                inc_bright()
+            elif index == 1:
+                dec_bright()
+            elif index == 2:
+                inc_vol()
+            elif index == 4:
+                time.sleep(1)
+                take_ss()
+                time.sleep(2)
 
+            
+        print(prediction,index)
         cv2.imshow("ImageWhite", imgWhite)
 
-        if index == 2:
-            # webbrowser.open("https://www.google.com")
-            # os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint.lnk")
-            # os.startfile(r"C:\Windows\System32\calc.exe")
-            # os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel.lnk")
-            
-            # thread_1 = threading.Thread(target=show_pics)
-            # thread_1.start()
-
-            # thread_1 = threading.Thread(target=play_music)
-            # thread_1.start()
-            # time.sleep(3)
-            pass
-            # time.sleep(5)
+        
 
         
         cv2.rectangle(imgOutput, (x-offset,y-offset), (x+w+offset, y+h+offset), (255,0,255), 4)
