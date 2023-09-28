@@ -1,0 +1,10 @@
+cvzone
+numpy
+python-opencv
+pycaw
+screen_brightness_control
+pyscreenshot
+playsound
+Pillow
+tkinter
+pygame

@@ -11,6 +11,11 @@ You can find the dataset [here](https://www.kaggle.com/datasets/avishkararjan/pe
 * Once the hand is detected, the respective model predicts the sign/gesture and carries out the action
 * A short time-delay is added near the execution of the action - to prevent the action executing multiple times in a single instance, during the time taken by the hand to stop posing the gesture
 
+## Usage
+* Clone the repository
+* install requirements in requirements.txt file
+* run : python main.py
+
 The following are the sources of knowledge and inspiration that helped me build this project successfully-
 1. [CVZone](https://www.computervision.zone/)
 2. [Hand Detection](https://www.youtube.com/watch?v=1WPrGSnS7Qw)
